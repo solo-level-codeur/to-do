@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <h1>Ma Todo List 🧙🧙 </h1>
+    <h1>Ma Todo List  </h1>
     <!-- Composant pour ajouter une nouvelle tâche -->
     <TodoInput @add-task="addTask" />
     
@@ -10,7 +10,7 @@
       @toggle-task="toggleTask" 
       @delete-task="deleteTask" 
     />
-    <footer><h3>Fais avec ❤️ et beaucoup de ☕☕☕☕☕</h3></footer>
+    <footer><h3>Fais avec ❤️ par karim </h3></footer>
   </div>
 
 
