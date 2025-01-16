@@ -1,12 +1,12 @@
 <template>
     <div class="todo-input">
       <input 
-        type="text" 
-        v-model="taskTitle" 
+        v-model="newTaskTitle" 
+        @keyup.enter="addTask" 
         placeholder="Ajouter une nouvelle tâche..." 
-        @keyup.enter="submitTask" 
+        class="input-task"
       />
-      <button @click="submitTask">Ajouter</button>
+      <button @click="addTask" class="add-btn">Ajouter</button>
     </div>
   </template>
   
@@ -15,50 +15,47 @@
     name: "TodoInput",
     data() {
       return {
-        taskTitle: "", // Texte de la nouvelle tâche
+        newTaskTitle: '',
       };
     },
     methods: {
-      submitTask() {
-        if (this.taskTitle.trim() !== "") {
-          // Émet un événement vers le parent avec le titre de la tâche
-          this.$emit("add-task", this.taskTitle.trim());
-          // Réinitialise le champ de texte
-          this.taskTitle = "";
+      addTask() {
+        if (this.newTaskTitle.trim()) {
+          this.$emit('add-task', this.newTaskTitle);
+          this.newTaskTitle = '';
         }
       },
     },
   };
   </script>
   
-  <style>
+  <style scoped>
   .todo-input {
     display: flex;
     justify-content: center;
-    gap: 10px;
     margin-bottom: 20px;
   }
   
-  input {
+  .input-task {
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    width: 300px;
+    width: 70%;
+    border-radius: 10px;
+    border: 1px solid #ccc;
   }
   
-  button {
-    padding: 10px 15px;
+  .add-btn {
+    padding: 10px;
     font-size: 16px;
-    background-color: #007bff;
+    background-color: #4CAF50;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 10px;
     cursor: pointer;
   }
   
-  button:hover {
-    background-color: #0056b3;
+  .add-btn:hover {
+    background-color: #45a049;
   }
   </style>
   
